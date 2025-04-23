@@ -1,6 +1,6 @@
-package br.com.dnos.CadastroDeNinjas.Ninjas;
+package br.com.dnos.CadastroDeNinjas.Ninja;
 
-import br.com.dnos.CadastroDeNinjas.Missoes.MissoesModel;
+import br.com.dnos.CadastroDeNinjas.Missao.MissaoModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,7 +37,7 @@ public class NinjaModel {
     @ManyToOne
     @JoinColumn(name = "missoes_id")
     @JsonIgnore
-    private MissoesModel missoes;
+    private MissaoModel missoes;
 
 
 

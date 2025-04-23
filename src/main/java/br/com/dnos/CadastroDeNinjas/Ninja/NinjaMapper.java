@@ -1,4 +1,4 @@
-package br.com.dnos.CadastroDeNinjas.Ninjas;
+package br.com.dnos.CadastroDeNinjas.Ninja;
 
 
 import org.springframework.stereotype.Component;

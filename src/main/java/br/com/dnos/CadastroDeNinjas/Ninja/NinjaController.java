@@ -1,4 +1,4 @@
-package br.com.dnos.CadastroDeNinjas.Ninjas;
+package br.com.dnos.CadastroDeNinjas.Ninja;
 
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Tag(name = "Ninja")
 @RestController
-@RequestMapping("ninjas")
+@RequestMapping("ninja")
 public class NinjaController {
     private final NinjaService ninjaService;
 

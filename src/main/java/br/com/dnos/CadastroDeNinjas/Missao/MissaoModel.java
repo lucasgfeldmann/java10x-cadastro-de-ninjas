@@ -1,7 +1,7 @@
-package br.com.dnos.CadastroDeNinjas.Missoes;
+package br.com.dnos.CadastroDeNinjas.Missao;
 
 
-import br.com.dnos.CadastroDeNinjas.Ninjas.NinjaModel;
+import br.com.dnos.CadastroDeNinjas.Ninja.NinjaModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MissoesModel {
+public class MissaoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
