@@ -38,7 +38,4 @@ public class NinjaModel {
     @JoinColumn(name = "missoes_id")
     @JsonIgnore
     private MissaoModel missoes;
-
-
-
 }
