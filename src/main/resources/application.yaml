@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: CadastroDeNinjas
+
+  datasource:
+    url: ${DATABASE_URL}
+    driver: org.h2.Driver
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
+
+  h2:
+    console.enabled: true
+
+  flyway:
+    enable: true
+    locations: classpath:db/migrations
+    baseline-on-migrate: true
