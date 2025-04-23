@@ -1,6 +1,7 @@
 package br.com.dnos.CadastroDeNinjas.Missoes;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,27 +16,27 @@ public class MissoesController {
         this.missoesService = missoesService;
     }
 
-    @GetMapping("/listar")
+    @GetMapping
     public List<MissoesDTO> listarTodasMissoes() {
         return missoesService.listarTodasMissoes();
     }
 
-    @GetMapping("/listar/{id}")
+    @GetMapping("{id}")
     public MissoesDTO listarMissaoPorId(@PathVariable Long id) {
         return missoesService.listarMissaoPorId(id);
     }
 
-    @PostMapping("/criar")
+    @PostMapping
     public MissoesDTO criarMissao(@RequestBody MissoesDTO missao) {
         return missoesService.criaMissao(missao);
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("{id}")
     public MissoesDTO alterarMissao(@PathVariable Long id, @RequestBody MissoesDTO missao) {
         return missoesService.atualizarMissao(id, missao);
     }
 
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("{id}")
     public void deletarMissao(@PathVariable Long id) {
         missoesService.deletarMissaoPorId(id);
     }
