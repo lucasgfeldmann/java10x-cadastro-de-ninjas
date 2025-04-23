@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Ninja")
 @RestController
 @RequestMapping("ninjas")
 public class NinjaController {
@@ -22,13 +23,14 @@ public class NinjaController {
     }
 
     @PostMapping
-    @Operation(summary = "Cria um novo ninja", description = "Rota cria um novo ninja e insere no banco de dados")
+    @Operation(summary = "Creates a new ninja")
     @ApiResponses(value = {@ApiResponse(responseCode = "201", description = "Ninja criado com Sucesso"), @ApiResponse(responseCode = "400", description = "Erro na criação do ninja")})
     public ResponseEntity<String> criarNinja(@RequestBody NinjaDTO ninja) {
         NinjaDTO novoNinja = ninjaService.criarNinja(ninja);
         return ResponseEntity.status(HttpStatus.CREATED).body("Ninja criado com sucesso: " + novoNinja.getNome() + " (ID): " + novoNinja.getId());
     }
 
+    @Operation(summary = "Returns all registered ninjas")
     @GetMapping
     public ResponseEntity<List<NinjaDTO>> listarNinjas() {
         List<NinjaDTO> nijas = ninjaService.listarNinjas();
@@ -36,7 +38,7 @@ public class NinjaController {
     }
 
     @GetMapping("{id}")
-    @Operation(summary = "Lista o ninja por ID", description = "Rota lista o ninja pelo ID")
+    @Operation(summary = "Returns a ninja specified by its id")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Ninja encontrado com Sucesso"), @ApiResponse(responseCode = "400", description = "Ninja não encontrado")})
     public ResponseEntity<?> listarNinjaPorId(@PathVariable Long id) {
         NinjaDTO ninja = ninjaService.listarNinjaPorId(id);
@@ -47,7 +49,7 @@ public class NinjaController {
     }
 
     @PutMapping("{id}")
-    @Operation(summary = "Altera o ninja por ID", description = "Rota altera o ninja pelo seu ID")
+    @Operation(summary = "Change all data from a ninja specified by its id")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Ninja alterado com Sucesso"), @ApiResponse(responseCode = "400", description = "Ninja não , não foi possivel alterar")})
     public ResponseEntity<?> alterarNinjaPorId(@Parameter(description = "Usuario manda por id no caminho da requisição") @PathVariable Long id, @Parameter(description = "Usuario manda os dados do ninja a ser atualizado no corpo da requisição") @RequestBody NinjaDTO ninjaAtualizado) {
         NinjaDTO ninja = ninjaService.atualizarNinja(id, ninjaAtualizado);
@@ -58,6 +60,7 @@ public class NinjaController {
 
     }
 
+    @Operation(summary = "Delete a ninja specified by its id")
     @DeleteMapping("{id}")
     public ResponseEntity<String> deletarNinjaPorId(@PathVariable Long id) {
         if (ninjaService.listarNinjaPorId(id) != null) {
